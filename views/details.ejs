@@ -1,0 +1,162 @@
+<% layout('layouts/boilerplate') %>
+
+
+    <div class="d-flex justify-content-center my-4">
+        <a href="/cart" class="text-body" style="text-decoration: none;">
+            <div class="step justify-content-center me-3">
+                <div class="item-number-step mx-5">1</div>
+                <div class="text-center"><h5 class="mt-1">Cart Content</h5></div>
+            </div>
+        </a>  
+
+        <div class="step justify-content-center me-3">
+            <div class="item-number-step current mx-4">2</div>
+            <div class="text-center"><h5 class="mt-1">Checkout</h5></div>
+        </div>
+    </div>
+
+
+
+    <div class="container mb-4">
+        <div class="row">
+            <div class="col-lg-8 mb-3 mb-lg-0">
+                <div class="card rounded-3">
+                    <div class="card-body">
+                    <div class="d-flex justify-content-center mb-1">
+                        <h5 class="mb-0">Order details</h5>
+                    </div>
+                
+                    <p class="small mb-2">Delivery details</p>
+                    <form action="/order" method="post" class="validated-form" novalidate>
+                        
+                        <div class="form-outline form-white mb-2">
+                            <input style="font-size: 18px;" type="email" id="email" class="form-control form-control-lg ps-3 py-0" name="delivery[email]"
+                            placeholder="example@example.com" required/>
+                            <label class="form-label" for="email">Email</label>
+                        </div>
+                        
+                
+                        <div class="row mb-0">
+                        <div class="col-md-8">
+                            <div class="form-outline form-white mb-2">
+                            <input style="font-size: 18px;" type="text" id="name" class="form-control form-control-lg" name="delivery[name]"
+                                placeholder="Peter Zagorski" required/>
+                            <label class="form-label" for="name">Name</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 ps-0">
+                            <div class="form-outline form-white">
+                            <input style="font-size: 18px;" type="text" id="phone" class="form-control form-control-lg" name="delivery[phone]"
+                                placeholder="0899977777" minlength="10" maxlength="12" required/>
+                            <label class="form-label" for="phone">Phone</label>
+                            </div>
+                        </div>
+                        </div>
+                
+                        <div class="row mb-0">
+                        <div class="col-md-9">
+                            <div class="form-outline form-white">
+                            <input style="font-size: 18px;" type="text" id="address" class="form-control form-control-lg" name="delivery[address]"
+                                placeholder="12 Robertson St., New York" id="exp" required/>
+                            <label class="form-label" for="address">Address</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3 ps-0">
+                            <div class="form-outline form-white">
+                            <input style="font-size: 18px;" type="text" id="zip" class="form-control form-control-lg" name="delivery[zip_code]"
+                                placeholder="1742" required/>
+                            <label class="form-label" for="zip">Zip</label>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col-lg-4">
+                <div class="accordion" id="accordionPanel">
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Payment Details
+                        </button>
+                        </h2>
+
+                        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <p class="small mb-2">Payment methods</p>
+                                <i class="fab fa-cc-mastercard fa-2x me-2"></i>
+                                <i class="fab fa-cc-visa fa-2x me-2"></i>
+                                <i class="fab fa-cc-amex fa-2x me-2"></i>
+                                <i class="fab fa-cc-paypal fa-2x"></i>
+                            
+                                <div class="form-outline form-white mb-2 mt-2">
+                                <input style="font-size: 18px;" type="text" id="typeName" class="form-control form-control-lg ps-3 py-0" size="17" name="card[name]"
+                                    placeholder="Peter Zagorski" />
+                                <label class="form-label" for="typeName">Cardholder's Name</label>
+                                </div>
+                        
+                                <div class="form-outline form-white mb-2">
+                                <input style="font-size: 18px;" type="text" id="typeText" class="form-control form-control-lg" size="16" name="card[number]"
+                                    placeholder="1234 5678 9012 3457" minlength="16" maxlength="19" />
+                                <label class="form-label" for="typeText">Card Number</label>
+                                </div>
+                        
+                                <div class="row mb-0">
+                                <div class="col-md-6">
+                                    <div class="form-outline form-white">
+                                    <input style="font-size: 18px;" type="text" id="typeExp" class="form-control form-control-lg" name="card[exp]"
+                                        placeholder="12/2029" size="7" id="exp" minlength="7" maxlength="7" />
+                                    <label class="form-label mb-0" for="typeExp">Expiration</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-outline form-white">
+                                    <input style="font-size: 18px;" type="text" id="typeText" class="form-control form-control-lg" name="card[cvv]"
+                                    placeholder="123" size="3" maxlength="3"/>
+                                    <label class="form-label mb-0" for="typeText">CVV</label>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-lg-8 mb-3 mb-lg-0">
+                <p class="small mb-2">If there is some additional information for easier delivery leave it here</p>
+                <textarea style="font-size: 18px;" id="additionalMessage" class="form-control form-control-lg" name="delivery[message]" rows="4"></textarea>
+            </div>
+
+            <div class=" col-lg-4">
+                <!-- Checkout Information Container -->
+                <div class="bg-light p-3 rounded">
+                    <h5 class="mb-3">Checkout Information</h5>
+                    <!-- Your content for the checkout information goes here -->
+                    <div class="row mb-3">
+                        <div class="col-6">Product Price:</div>
+                        <div class="col-6 text-end">$<%= total.toFixed(2) %></div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">Delivery Price:</div>
+                        <div class="col-6 text-end">$7.99</div>
+                    </div>
+                    <hr>
+                    <div class="row mb-3">
+                        <div class="col-6">Total Price:</div>
+                        <div class="col-6 text-end">$<%= (total + 7.99).toFixed(2) %></div>
+                    </div>
+
+                    <input type="hidden" name="total_price" value="<%= (total + 7.99).toFixed(2) %>">
+                    <div class="text-end mt-3">
+                        <button class="btn btn-primary btn-lg">Place Order</button>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>

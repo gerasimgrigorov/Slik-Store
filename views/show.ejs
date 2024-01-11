@@ -1,0 +1,170 @@
+<% layout('layouts/boilerplate') %>
+
+    <section class="pt-md-3">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8 p-0">
+                    <div class="row container-fluid pe-0">
+                        <div class="col-2 pe-0">
+                            <% for (let image of product.images) { %>
+                                <img class="card-img-top clickable-image mb-2" src="<%= image.url %>"/>
+                            <% } %>
+                        </div>
+
+                        <div class="col-10 pe-0 ps-2">
+                            <img class="mainImage img-fluid card-img-top mb-2" src="<%= product.images[0].url %>" alt="Main Image" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-auto">
+                    <h2 class="fw-bolder"><%= product.brand %></h2>
+                    <h3 class="fw-bolder"><%= product.model %></h3>
+                    <div class="fs-5 mb-3">
+                        <span class="fs-3 fw-medium">$<%= product.price %></span>
+                    </div>
+
+                    <form action="/cart/add" method="post" class="validated-form" novalidate>
+
+                        <div class="swatch-container">
+                            <h5 class="product-heading" style="display: block;">Select size:</h5>
+                            
+                            <% if (product.type === 'shoes') { %>
+                                
+                                <select class="form-select" id="size" name="size" required>
+                                    <option selected disabled value="">Open this select menu</option>
+                                    <option value="41">41</option>
+                                    <option value="42">42</option>
+                                    <option value="43">43</option>
+                                    <option value="44">44</option>
+                                    <option value="44.5">44.5</option>
+                                    <option value="45">45</option>
+                                    <option value="46">46</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please choose a size.
+                                </div>
+
+                            <% } else if (product.type === 'socks') { %>
+                            
+                                <select class="form-select" id="size" name="size" required>
+                                    <option selected disabled value="">Open this select menu</option>
+                                    <option value="36-40">36-40</option>
+                                    <option value="40-44">40-44</option>
+                                    <option value="44-48">44-48</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please choose a size.
+                                </div>
+
+                            <% } else { %>
+
+                                <select class="form-select" id="size" name="size" required>
+                                    <option selected disabled value="">Select size</option>
+                                    <option value="XS">XS</option>
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please choose a size.
+                                </div>
+
+                            <% } %>
+                        </div>
+                        
+                        <input type="hidden" name="id" value="<%= product._id %>">
+                    
+                        <div class="row my-3 px-0">
+                            <!-- add to card  -->
+                            <div class="col-9 col-xl-10 pe-0">
+                                <button class="btn btn-outline-dark w-100">Add to cart</button>
+                                
+                            </div>
+                    </form>
+                            <div class="col-3 col-xl-2 ps-2">
+                                <form action="/wishlist/<%= product._id %>" method="post">
+                                    <% if (currentUser && currentWishlist) { %>
+                                        <% if(currentWishlist.products.includes(product._id)) { %>
+                                            <button class="btn btn-outline-dark w-100"><i class="fa-solid fa-heart"></i></button>
+                                        <% } else { %>
+                                            <button class="btn btn-outline-dark w-100"><i class="fa-regular fa-heart"></i></button>
+                                        <% } %>
+                                    <% } else { %>
+                                        <button class="btn btn-outline-dark w-100"><i class="fa-regular fa-heart"></i></button>
+                                    <% } %>
+                                </form>
+                            </div>
+                        </div>
+                    
+
+                    <h6>Having any uncertainties with the sizes?</h6>
+                    <p class="lead fs-6">With every order you get the right to review and test before payment.</p>
+                </div>            
+            </div>
+        </div>      
+    </section>
+
+    <section id="product1" class="section-p1 pb-4">
+        <h2 class="mx-1 my-4">Featured Products</h2>
+    
+        <div class="pro-container mt-5">
+            <% for (let product of featured) { %>
+                <div class="card pro event rounded-0 border-0" data-product-id="<%= product._id %>">
+                    <div class="img-container">
+                        <div class="overlay">
+                            <i class="magnifier-icon fas fa-search"></i>
+                        </div>
+                        <img class="card-img-top rounded-0" src="<%= product.images[0].url %>" alt="..." />
+                    </div>
+                    <div class="card-body py-3 px-1">
+                        <div class="text-start">
+                            <h5 class="fw-semibold"><%= product.brand.toUpperCase() %> <%= product.model %></h5>
+                            <span>$<%= product.price %></span>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const clickableImages = document.querySelectorAll('.clickable-image');
+
+            clickableImages.forEach(function (image) {
+                image.addEventListener('click', function () {
+                    changeMainImage(image);
+                });
+            });
+        });
+
+        function changeMainImage(clickedImage) {
+            const newImageSrc = clickedImage.src;
+            console.log(newImageSrc);
+            document.querySelector('.mainImage').src = newImageSrc;
+        }
+
+        function selectSize(element) {
+            var sizeButtons = document.querySelectorAll('.size-button');
+            sizeButtons.forEach(function (btn) {
+                btn.classList.remove('selected');
+            });
+            
+            element.classList.add('selected');
+            console.log(element.classList)
+            console.log(element.value)
+        }
+
+        function selectSizeSocks(element) {
+            var sizeButtons = document.querySelectorAll('.size-button-socks');
+            sizeButtons.forEach(function (btn) {
+                btn.classList.remove('selected');
+            });
+    
+            element.classList.add('selected');
+        }
+    </script>
+
+

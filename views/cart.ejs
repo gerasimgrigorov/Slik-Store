@@ -1,0 +1,74 @@
+<% layout('layouts/boilerplate') %>
+
+    <div class="d-flex justify-content-center my-4">
+        <div class="step justify-content-center me-3">
+            <div class="item-number-step current mx-5">1</div>
+            <div class="text-center"><h5 class="mt-1">Cart Content</h5></div>
+        </div>
+
+        <div class="step justify-content-center mx-3">
+            <div class="item-number-step mx-4">2</div>
+            <div class="text-center"><h5 class="mt-1">Checkout</h5></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="card border border-0 ">
+                <div class="card-body pt-2 px-0 p-sm-4">
+                    <div class="row">
+                        <div class="col-lg-10 offset-lg-1">
+                            <h5 class="mb-1"><a href="/products" class="text-body"><i
+                                class="fas fa-long-arrow-alt-left me-2"></i>Continue shopping</a></h5>          
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div>
+                                <p class="mb-0">You have <span><%= addedProducts.length %></span> items in your cart</p>
+                                </div>
+                            </div>
+
+                            <div class="overflow-prod">
+                                <% for(let product of addedProducts) { %>
+                                <% console.log() %>
+                                <div class="card mb-2 cart-product remove-border">
+                                    <div class="card-body p-1 p-sm-2">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex flex-row align-items-center item-container event" data-product-id="<%= product.current._id %>">
+                                            <div>
+                                                <img src="<%= product.current.images[0].url %>" class="rounded-3" alt="Shopping item" style="width: 100px;">
+                                            </div>
+                                            <div class="ms-3 testtest">
+                                                <h4 class="mb-1"><%= product.current.brand %> <%= product.current.model %></h4>
+                                                <p class="fs-6 fw-light mb-0 ">Size: <%= product.size %></p>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center">
+                                            <div class="quantity">
+                                                <input type="number" min="1" max="10" value="<%= product.quantity %>">
+                                            </div>
+                                            <div class="me-2">
+                                                <h4 class="mb-0">$<%= product.current.price * product.quantity %></h4>
+                                            </div>
+                                            <form action="/cart/product?_method=DELETE" method="post">
+                                                <input type="hidden" name="id" value="<%= product.current._id %>">
+                                                <input type="hidden" name="size" value="<%= product.size %>">
+                                                <button class="border border-0 rounded-3" style="color: #cecece;"><i class="fas fa-trash-alt"></i></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                                <% } %>
+                            </div>
+                            <form action="/cart/delivery" method="post" class="mt-1">
+                                <div class="text-end">
+                                    <input type="hidden" name="totalPrice" value=<%= totalPrice %>>
+                                    <input type="hidden" name="addedProducts" value="<%= JSON.stringify(addedProducts) %>">
+                                    <button class="btn btn-primary">Next step</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

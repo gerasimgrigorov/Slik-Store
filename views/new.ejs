@@ -1,0 +1,70 @@
+<% layout('layouts/boilerplate') %>
+
+    <div class="row mb-4">
+        <h1 class="text-center mt-4">Add Product</h1>
+        <div class="col-sm-8 offset-sm-2 col-md-4 offset-md-4">
+            <form action="/products" method="post" class="validated-form" enctype="multipart/form-data" novalidate>
+                <div class="mb-3">
+                    <label for="brand" class="form-label">Brand:</label>
+                    <input type="text" id="brand" name="product[brand]" class="form-control" required>
+                    <div class="invalid-feedback">
+                        Please provide a brand of the product.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="model" class="form-label">Model:</label>
+                    <input type="text" id="model" name="product[model]" class="form-control" required>
+                    <div class="invalid-feedback">
+                        Please provide a model of the product.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="price" class="form-label">Price:</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">$</span>
+                        <input type="text" id="price" name="product[price]" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="0.00" required>
+                        <div class="invalid-feedback">
+                            Please provide a price of the product.
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="mb-3">
+                    <label for="image" class="form-label">Images: </label>
+                    <input type="file" name="image" id="image" class="form-control" multiple required>
+                    <div class="invalid-feedback">
+                        Please provide at least 1 image of the product.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="type" class="form-label">Type:</label>
+                    <select class="form-select" id="type" name="product[type]" required>
+                        <option selected disabled value="">Open this select menu</option>
+                        <option value="hoodie">Hoodie</option>
+                        <option value="tshirt">T-shirt</option>
+                        <option value="shoes">Shoes</option>
+                        <option value="pants">Pants</option>
+                        <option value="track">Track</option>
+                        <option value="sweatshirt">Sweatshirt</option>
+                        <option value="jeans">Jeans</option>
+                        <option value="polo">Polo</option>
+                        <option value="underwear">Underwear</option>
+                        <option value="socks">Socks</option>
+                    </select>
+
+                    <div class="invalid-feedback">
+                        Please select the type of the product.
+                    </div>                
+                </div>
+            
+                <div class="d-grid my-3">
+                    <button class="btn btn-primary">Add Product</button>
+                </div>
+            </form>
+            <a href="/home">Back to Home Page</a>
+        </div>
+    </div>

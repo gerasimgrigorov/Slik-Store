@@ -1,0 +1,272 @@
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#flash{
+    margin: 0% 4%;
+}
+
+#hero{
+    background-image: url('/images/Supreme-girl.png');
+    height: 90vh;
+    background-size:cover;
+    background-repeat: no-repeat;
+    justify-content: center;
+    background-position: center top;
+    margin: 0% 4%;
+}
+
+.cart-number{
+    margin-top: 4px;
+    font-size: 10px !important;
+}
+
+.logo{
+    width: 110px;
+}
+
+.img-fluid {
+    width: 100%;
+    height: auto;
+}
+
+.single-item{
+    transition: 0.5s ease;
+}
+
+.single-item:hover{
+    box-shadow: 1px 2px 20px 0.2px rgb(138, 138, 138);
+}
+
+.carousel-indicators button{
+    width: 120px !important; 
+}
+
+.image-brand img{
+    width: 220px;
+}
+
+/* STYLE SIZE */
+.size-button {
+    width: 35px;
+    height: 35px;
+    line-height: 32px;
+    text-align: center;
+    align-items: center;
+    display: inline-block;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* only for socks */
+.size-button-socks{
+    width: 48px;
+    height: 35px;
+    line-height: 32px;
+    text-align: center;
+    align-items: center;
+    display: inline-block;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.size-button.selected {
+    background-color: #ececec;
+    transition: 0.15s ease;
+}
+.size-button-socks.selected{
+    background-color: #ececec;
+    transition: 0.15s ease;
+}
+
+
+/* PRODUCT PAGE  */
+#product1{
+    width: 85%;
+    margin: 0% auto;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+}
+  
+/* #product1  */
+.pro-container{
+    margin: 0 6%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.wishlist-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* testtest  */
+
+#product1 .pro {
+    width: 20%;
+    min-width: 250px;
+    cursor: pointer;
+    margin: 10px 20px 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+#product1 .pro .img-container {
+    position: relative;
+    overflow: hidden;
+}
+
+#product1 .pro .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(224, 224, 224, 0.7);
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+#product1 .pro .img-container:hover .overlay {
+    opacity: 90%;
+    transform: scale(2);
+}
+
+#product1 .pro img {
+    width: 100%;
+    transition: 0.5s ease;
+}
+
+#product1 .pro .magnifier-icon {
+    color: rgb(136, 136, 136);
+    background-color: white;
+    font-size: 0.7rem;
+    border: 1px solid white; /* Add border around the magnifier icon */
+    padding: 4px; /* Adjust padding as needed */
+}
+
+
+/* testest  */
+
+.wishProd{
+    width: 30%;
+    min-width: 200px !important;
+    cursor: pointer;
+    margin: 0% 1%;
+    position: relative;
+}
+
+.wishProd img{
+    width: 100%;
+}
+
+.cart-product input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.cart-product input{
+    width: 32px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.cart-product .item-container{
+    cursor: pointer;
+}
+
+.item-number-step {
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    background: #F9F9F9;
+    color: #616161;
+    text-align: center;
+    font-size: 25px;
+    line-height: 45px;
+    border-radius: 50%;
+    border: 1px solid #F9F9F9;
+}
+
+.current{
+    background: black !important;
+    color: #F9F9F9 !important; 
+}
+
+.map{
+    height: 100%;
+    min-height: 360px;
+}
+
+/* ERROR PAGE */
+.testtest{
+    min-width: 220px !important;
+}
+
+.remove-border {
+    border: 1px solid #ddd !important; /* Add your border styles here */
+}
+/* ------------------ */
+
+@media (min-width: 1025px) {
+    .h-custom {
+        height: 100vh !important;
+    }
+}
+
+@media (max-width: 1200px) {
+    .image-brand img{
+        width: 170px;
+    }
+}
+
+@media (max-width: 992px) {
+    #flash{
+        margin: 0;
+    }
+    #hero{
+        margin: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .image-brand img{
+        width: 120px;
+    }
+    
+    .remove-border {
+        border: none !important; /* Add your border styles here */
+    }
+}
+
+@media (max-width: 576px) {
+    .famous-brands {
+        margin: 0% 4%;
+    }
+}
+
+
+@media (max-width: 500px) {
+    .overflow-prod{
+        overflow-x: auto;
+    }
+}
+
+@media (max-width: 400px) {
+    .logo{
+        width: 90px;
+    }
+    .image-brand img{
+        width: 100px;
+    }
+}

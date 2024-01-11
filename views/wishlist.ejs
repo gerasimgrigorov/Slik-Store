@@ -1,0 +1,28 @@
+<% layout('layouts/boilerplate') %>
+
+    <div class="my-4 my-md-5 container">
+        <h3 class="text-center mb-4">Personal details</h3>
+        <div class="row justify-content-center">
+            <%- include('partials/menu') %>
+
+            <div class="col-md-7 wishlist-container p-0">
+                <% if (products.length) { %>
+                    <% for (let product of products) { %>
+                        <div class="card pro wishProd event border-0" data-product-id="<%= product._id %>">
+
+                            <img class="card-img-top" src="<%= product.images[0].url %>" alt="..." />
+                            <div class="card-body py-3 px-1">
+                                <div class="text-start">
+                                    <h5 class="fw-semibold"><%= product.brand.toUpperCase() %>  <%= product.model %></h5>
+                                    <span>$<%= product.price %></span>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                <% } else { %>
+                    <h5 class="mt-2 text-secondary-emphasis text-center"><em>No products in the wishlist yet</em></h5>
+                <% } %>
+            </div>
+
+        </div>
+    </div>

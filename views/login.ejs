@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/sign.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+    <section class="back-container forms">
+        <div class="form">
+            <div class="form-content">
+                <header>Login</header>
+                <form action="/login" method="post">
+                    <div class="field input-field">
+                        <input type="text" name="username" placeholder="Username" class="input">
+                    </div>
+
+                    <div class="field input-field">
+                        <input type="password" name="password" placeholder="Password" class="password">
+                    </div>
+
+                    <!-- <div class="form-link">
+                        <a href="#" class="forgot-pass">Forgot password?</a>
+                    </div> -->
+
+                    <div class="field button-field">
+                        <button>Login</button>
+                    </div>
+                </form>
+
+                <div class="form-link">
+                    <span>Don't have an account? <a href="/register" class="link signup-link">Signup</a></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="public/javascript/hidePassword.js"></script>
+</body>
+</html>

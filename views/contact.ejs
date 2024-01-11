@@ -1,0 +1,36 @@
+<% layout('layouts/boilerplate') %>
+
+    <div class="container">
+        <%- include('../views/partials/flash') %>
+        <h3 class="text-center mb-4 mt-3">Contact Us</h3>
+        <div class="row">
+            <div class="col-md-6 px-0 pb-4">
+                <form action="/contact" method="post" class="validated-form" novalidate>
+                    <div class="form-floating mb-2">
+                        <input type="email" class="form-control" placeholder="Your email" name="contact[email]" id="floatingTextarea" required>
+                        <label for="floatingTextarea">Email</label>                      
+                    </div>
+                    
+                    <div class="form-floating mb-2">
+                        <textarea class="form-control" placeholder="The topic of the message" name="contact[subject]" id="floatingTextarea" required></textarea>
+                        <label for="floatingTextarea">Subject</label>                        
+                    </div>
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" placeholder="Leave the message here" name="contact[message]" id="floatingTextarea" style="height: 22vh" required></textarea>
+                        <label for="floatingTextarea2">You message</label>
+                    </div>
+
+                    <button class="btn btn-primary btn-lg d-block">Submit message</button>
+                </form>
+            </div>
+
+            <div class="col-md-6 px-0 ps-md-3 pb-sm-4">
+
+                <div id="map" class="border map"></div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script src="/javascript/mapScript.js"></script>

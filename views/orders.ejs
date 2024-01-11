@@ -1,0 +1,92 @@
+<% layout('layouts/boilerplate') %>
+
+    <div class="container mt-3">
+        <div class="col-md-8 offset-md-2">
+            <div class="accordion" id="accordionExample">
+                <% for (let i = 0; i < orders.length; i++) { %>
+                    <% 
+                        const order = orders[i];
+                        const year = order.order_date.getFullYear();
+                        const month = String(order.order_date.getMonth() + 1).padStart(2, '0');
+                        const day = String(order.order_date.getDate()).padStart(2, '0');
+                        const hours = String(order.order_date.getHours()).padStart(2, '0');
+                        const minutes = String(order.order_date.getMinutes()).padStart(2, '0');
+                        const seconds = String(order.order_date.getSeconds()).padStart(2, '0');
+                        const formattedDate = `${year}-${day}-${month} ${hours}:${minutes}:${seconds}`;
+                        const collapseId = `collapse${i}`;  // Unique identifier for each accordion item
+                    %>
+
+                    <div class="accordion-item mb-3 border">
+                        <h2 class="accordion-header">
+                            <div class="card border-0">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#<%= collapseId %>" aria-expanded="false" aria-controls="<%= collapseId %>">
+                                    <div class="card-body p-0">
+                                        <h5 class="card-title">Order #<%= order._id %>
+                                            <span class="fs-6 fw-lighter rounded p-1 <%= order.order_status === 'pending'? 'bg-warning' : '' %> <%= order.order_status === 'shipped'? 'bg-info text-white' : '' %> <%= order.order_status === 'delivered'? 'bg-success text-white' : '' %>">
+                                                <%= order.order_status %>
+                                            </span>
+                                        </h5>
+                                        <p class="card-text">From: <strong><%= order.user_id ?  "@" + order.user_id.username : 'No user' %></strong> | Date: <%= formattedDate %></p>
+                                    </div>
+                                </button>
+                            </div>
+                        </h2>
+                        <div id="<%= collapseId %>" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body pb-1">
+                                <% for(let product of order.products) { %>
+                                    <div class="card mb-2 cart-product">
+                                        <div class="card-body p-2">
+                                            <div class="d-flex justify-content-between">
+                                                <div class="d-flex flex-row align-items-center item-container">
+                                                    <div>
+                                                        <img src="<%= product.product_id.images[0].url %>" class="img-fluid rounded-3" alt="Shopping item" style="width: 110px;">
+                                                    </div>
+                                                    <div class="ms-3">
+                                                        <h4 class="mb-1"><%= product.product_id.brand %> <%= product.product_id.model %></h4>
+                                                        <p class="fs-6 fw-light mb-0 ">Size: <%= product.size %></p>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex flex-row align-items-center">
+                                                    <div class="quantity">
+                                                        <input type="number" min="1" max="10" value="<%= product.quantity %>">
+                                                    </div>
+                                                    <div class="me-2">
+                                                        <h4 class="mb-0">$<%= product.product_id.price * product.quantity %></h4>
+                                                    </div>
+                                                    <form action="/cart/product?_method=DELETE" method="post">
+                                                        <input type="hidden" name="id" value="<%= product.product_id._id %>">
+                                                        <input type="hidden" name="size" value="<%= product.size %>">
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <% } %>
+                                <div class="row">
+                                    <div class="col-8 col-md-4 mb-md-2">
+                                        <form action="/order/<%= order._id %>?_method=PUT" method="post">
+                                        <select class="form-select" name="order_status" required>
+                                            <option selected disabled value="">Update order status</option>
+                                            <option value="pending">pending</option>
+                                            <option value="shipped">shipped</option>
+                                            <option value="delivered">delivered</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-4 col-md-3 col-lg-2 ps-0">
+                                        <button class="btn btn-primary w-100">Update</button>
+                                        </form>
+                                    </div>
+                                    
+                                    <div class="col-md-5 col-lg-6">
+                                        <h5 class="text-end mt-2">Total: <%= order.total_price %></h5>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </div>

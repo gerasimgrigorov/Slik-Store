@@ -1,0 +1,85 @@
+<% layout('layouts/boilerplate') %>
+
+<style>
+* {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+
+  img{
+    width: 35%;
+  }
+
+  h3{
+    font-family: 'Cabin', sans-serif;
+    font-size: 18px !important;
+    font-weight: 800 !important; 
+    text-transform: uppercase;
+    color: #262626;
+    margin-bottom: 0px !important;
+    margin-bottom: -20px !important;
+    letter-spacing: 2px;
+  }
+
+  h2{
+    font-family: 'Cabin', sans-serif;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    color: #000;
+  }
+
+  .message{
+    max-width: 520px;
+  }
+  .status-code{
+    line-height: 1;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 250px;
+    font-weight: 900;
+    margin: 0px;
+    color: #262626;
+    text-transform: uppercase;
+    padding-right: 30px;
+    letter-spacing: -30px;
+  }
+  
+  @media only screen and (max-width: 767px) {
+    .status-code{
+        font-size: 200px;
+    }
+    img{
+        width: 45%;
+    }
+  }
+  
+  @media only screen and (max-width: 480px) {
+    .status-code{
+        font-size: 120px;
+        letter-spacing: -10px;
+        padding-right: 10px;
+    }
+    img{
+        width: 55%;
+    }
+  }
+  
+</style>
+
+    <div class="container mt-3 mb-5">
+        <div class="text-center">
+            <img src="https://res.cloudinary.com/dfkaodmtf/image/upload/v1704556601/cartoon-dino_c56mhf.png" alt="">
+        </div>
+
+        <div class="message mx-auto">
+            <div class="text-center">
+                <h3>Oops! <%= err.message %></h3>
+                <h1 class="status-code mx-auto"><%= err.status %></h1>
+                <h2 class="mt-0 mb-3">We are sorry, but page failed to respond!</h2>
+                
+                <% if (process.env.NODE_ENV !== 'production') { %> 
+                    <p class="text-start"><%= err.stack %></p>
+                <% } %>
+            </div>
+        </div>
+    </div>

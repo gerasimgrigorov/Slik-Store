@@ -1,0 +1,44 @@
+<% layout('layouts/boilerplate') %>
+
+    <div class="my-4 my-md-5 container">
+        <h3 class="text-center mb-4">My orders</h3>
+        <div class="row justify-content-center">
+            <%- include('partials/menu') %>
+
+            <div class="col-md-7">
+                <% if (orders.length) { %>
+                    <% for (let order of orders) { %>
+                        <!-- formating the date -->
+                        <% 
+                        const year = order.order_date.getFullYear();
+                        const month = String(order.order_date.getMonth() + 1).padStart(2, '0'); // Ensure two digits
+                        const day = String(order.order_date.getDate()).padStart(2, '0'); // Ensure two digits
+                        const hours = String(order.order_date.getHours()).padStart(2, '0'); // Ensure two digits
+                        const minutes = String(order.order_date.getMinutes()).padStart(2, '0'); // Ensure two digits
+                        const seconds = String(order.order_date.getSeconds()).padStart(2, '0');
+                        const formattedDate = `${year}-${day}-${month} ${hours}:${minutes}:${seconds}`;
+                        %>
+
+                        <div class="card mb-2">
+                            <div class="row">
+                                <div class="col-7 col-sm-8 col-lg-9 pe-0 pe-lg-3">
+                                    <div class="card-body pe-0 ps-2 ps-sm-3">
+                                        <h5 class="card-title">Order #<%=order._id %>
+                                            <span class="fs-6 fw-lighter rounded p-1 <%= order.order_status === 'pending'? 'bg-warning' : '' %> <%= order.order_status === 'shipped'? 'bg-info text-white' : '' %> <%= order.order_status === 'delivered'? 'bg-success text-white' : '' %>"><%= order.order_status %>
+                                            </span>
+                                        </h5>
+                                        <p class="card-text"><%= formattedDate %></p>
+                                    </div>
+                                </div>
+                                <div class="col-3 col-sm-3 col-lg-2 ms-4 align-self-center ps-0 ps-lg-2 pe-0">
+                                    <h5 class="mb-0 text-end me-md-3 me-lg-0">$<%= order.total_price %></h5>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                <% } else { %>
+                    <h5 class="mt-2 text-secondary-emphasis text-center"><em>No orders yet</em></h5>
+                <% } %>
+            </div>
+        </div>
+    </div>

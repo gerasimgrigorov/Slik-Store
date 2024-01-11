@@ -1,0 +1,50 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-black bg-body-secondary py-1">
+    <div class="container-fluid mx-sm-0 mx-lg-5">
+        <div class="ms-2 ms-sm-3 ms-md-5">
+            <a href="/home" class="navbar-brand">
+
+                <svg class="logo" viewBox="0 0 284 185" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M33.6045 62.7119L25 75.546L72.7568 119.691L46.0541 124.766L61.4595 141.003L94.3243 129.84L96.3784 145.967L112.811 149.02L128.73 123.071L133.865 143.932L146.189 148.003L159.027 136.3L154.919 123.071L167.757 98.6481L170.324 112.405L164.676 116.985L173.405 129.196L182.649 175L201.135 165.359C201.135 165.359 191.892 133.267 197.027 129.196C212.349 117.051 256.595 141.003 256.595 141.003L272 129.332L207.811 107.826L239.649 77.0682L237.595 68.9496L190.351 101.718L171.865 4L153.892 11.1039L162.108 61.5023L147.73 98.6481L142.081 79.0979L118.973 85.1869L122.568 98.6481L112.811 113.404L100.486 23.2819L87.6487 28.3561L93.2973 113.404L56.3243 82.3662H80.973L76.6271 69.7692L33.6045 62.7119Z" fill="DimGray"/>
+                  <path d="M135.846 69.7692L121.674 74.8284L113.576 61.5023L133.85 53.2196L135.846 69.7692Z" fill="DimGray"/>
+                  <path d="M215.465 51.1144L216.036 42.7788C216.093 41.9411 215.155 41.4099 214.466 41.8901L205.927 47.8437C205.639 48.0451 205.265 48.0797 204.944 47.9347L195.896 43.8464C195.086 43.4806 194.237 44.2732 194.546 45.1059L197.334 52.6115C197.465 52.9631 197.388 53.3583 197.135 53.6349L191.944 59.3045C191.342 59.9617 191.836 61.0183 192.726 60.9787L203.706 60.4913C203.997 60.4783 204.279 60.5931 204.479 60.8056L211.262 68.0271C211.815 68.6164 212.803 68.3393 212.969 67.548L214.421 60.6358C214.501 60.2541 214.796 59.9538 215.176 59.8666L224.273 57.7802C225.207 57.5661 225.334 56.2886 224.461 55.8942L216.051 52.094C215.67 51.922 215.436 51.5313 215.465 51.1144Z" fill="DimGray"/>
+                  <path d="M275.5 92.5C275.5 114.224 261.975 135.018 237.77 150.785C213.643 166.502 179.807 176.5 142 176.5C104.193 176.5 70.3571 166.502 46.2303 150.785C22.0248 135.018 8.5 114.224 8.5 92.5C8.5 70.776 22.0248 49.9825 46.2303 34.2148C70.3571 18.4984 104.193 8.5 142 8.5C179.807 8.5 213.643 18.4984 237.77 34.2148C261.975 49.9825 275.5 70.776 275.5 92.5Z" stroke="DimGray" stroke-width="17"/>
+                  </svg>         
+                  
+
+            </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="mx-auto">
+            <div class="navbar-nav">
+              <a class="nav-link fs-5 fw-bold nav-text" href="/home">Home</a>
+              <a class="nav-link fs-5 fw-bold mx-1 nav-text" href="/products">Shop</a>
+              <a class="nav-link fs-5 fw-bold nav-text" href="/contact">Contacts</a>
+            </div>
+          </div>
+          
+          <div class="me-5">
+              <div class="navbar-nav">
+                <a class="nav-link fs-5" href="<%= cartQuantity > 0 ? '/cart' : 'javascript:void(0);' %>">
+                  <i class="fa-solid fa-cart-shopping"></i> 
+                  <span class="badge rounded-pill bg-secondary position-absolute top-40 translate-middle cart-number">
+                    <%= cartQuantity  %>
+                  </span>
+                </a>
+                
+                <a class="nav-link fs-5" href=<%= currentUser ? "/profile/info" : "/login" %>><i class="fa-solid fa-user"></i></a>  
+                
+                <% if (currentUser && currentUser.role === 'admin') { %>
+                  <a class="nav-link fs-5" href="/order"><i class="fa-solid fa-chart-simple"></i></a>
+                  <a class="nav-link fs-5" href="/new"><i class="fa-solid fa-circle-plus"></i></a>  
+                <% } %> 
+                <% if (currentUser) { %>
+                  <a class="nav-link fs-5" href="/logout"><i class="fa-solid fa-right-from-bracket"></i></a>   
+                <% } %>
+              </div>
+          </div>
+        </div>
+    </div>
+</nav>
