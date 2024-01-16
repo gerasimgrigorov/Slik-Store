@@ -185,7 +185,7 @@ app.get('/new', isAdmin, (req, res) => {
     res.render('new');
 })
 
-app.get('/home', catchAsync( async(req, res) => {
+app.get('/', catchAsync( async(req, res) => {
     const products = await Product.aggregate([{ $sample: { size: 8 } }]);
     res.render('index', { products });
 }));
@@ -210,11 +210,11 @@ app.post('/register', catchAsync( async(req, res) => {
         const registerUser = await User.register(user, password);
         req.login(registerUser, () => {
             req.flash('success', `Wellcome, ${username}!`)
-            res.redirect('/home')
+            res.redirect('/')
         })
     } catch (e) {
         req.flash('error', 'The email or username already exists')
-        res.redirect('/home')
+        res.redirect('/')
     }
 }))
 
@@ -224,7 +224,7 @@ app.get('/logout', (req, res, next) => {
             return next(err);
         }
         req.flash('success', `Good bye. See you next time!`)
-        res.redirect('/home');
+        res.redirect('/');
     });
 });
 
