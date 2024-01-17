@@ -42,8 +42,8 @@ const contactRouter = require('./routes/contact')
 const profileRouter = require('./routes/profile')
 const userRouter = require('./routes/user')
 
-const dbUrl = 'mongodb://127.0.0.1:27017/slik-store'
-// const dbUrl = process.env.DB_URL
+//const dbUrl = 'mongodb://127.0.0.1:27017/slik-store'
+const dbUrl = process.env.DB_URL
 
 mongoose.connect(dbUrl)
     .then(() => {
