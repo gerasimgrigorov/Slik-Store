@@ -10,7 +10,7 @@ router.get('/login', (req, res) => {
 
 router.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), (req, res) => {
     req.flash('success', `Wellcome back, ${req.user.username}!`)
-    res.redirect('/home');
+    res.redirect('/');
 })
 
 router.get('/register', (req, res) => {
@@ -24,7 +24,7 @@ router.post('/register', catchAsync( async(req, res) => {
         const registerUser = await User.register(user, password);
         req.login(registerUser, () => {
             req.flash('success', `Wellcome, ${username}!`)
-            res.redirect('/home')
+            res.redirect('/')
         })
     } catch (e) {
         req.flash('error', e.message)
@@ -37,7 +37,7 @@ router.get('/logout', (req, res, next) => {
         if (err) {
             return next(err);
         }
-        res.redirect('/home');
+        res.redirect('/');
     });
 });
 

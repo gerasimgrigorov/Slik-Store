@@ -187,7 +187,7 @@ app.get('/new', isAdmin, (req, res) => {
     res.render('new');
 })
 
-app.get('/home', catchAsync( async(req, res) => {
+app.get('/', catchAsync( async(req, res) => {
     const products = await Product.aggregate([{ $sample: { size: 8 } }]);
     res.render('index', { products });
 }));

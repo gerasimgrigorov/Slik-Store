@@ -6,7 +6,7 @@ const Product = require('../models/product')
 
 const validateCart = (req, res, next) => {
     if (!req.session.cart[0]) {
-        return res.redirect('/home')
+        return res.redirect('/')
     }
     next()
 }

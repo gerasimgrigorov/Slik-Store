@@ -55,7 +55,7 @@ router.post('/', isLoggedIn, validateOrder, catchAsync( async(req, res) => {
 
     req.session.cart = [];
     req.flash('success', 'You successfully placed your order!')
-    res.redirect('/home');
+    res.redirect('/');
 }))
 
 module.exports = router
