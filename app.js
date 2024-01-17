@@ -213,8 +213,8 @@ app.post('/register', catchAsync( async(req, res) => {
             res.redirect('/home')
         })
     } catch (e) {
-        req.flash('error', 'The email or username already exists')
-        res.redirect('/home')
+        req.flash('error', e.message)
+        res.redirect('/register')
     }
 }))
 
