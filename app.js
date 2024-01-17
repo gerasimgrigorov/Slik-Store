@@ -40,6 +40,7 @@ const cartRouter = require('./routes/cart')
 const orderRouter = require('./routes/order')
 const contactRouter = require('./routes/contact')
 const profileRouter = require('./routes/profile')
+const userRouter = require('./routes/user')
 
 const dbUrl = 'mongodb://127.0.0.1:27017/slik-store'
 // const dbUrl = process.env.DB_URL
@@ -180,6 +181,7 @@ app.use('/cart', cartRouter)
 app.use('/order', orderRouter)
 app.use('/contact', contactRouter)
 app.use('/profile', profileRouter)
+app.use('/', userRouter)
 
 app.get('/new', isAdmin, (req, res) => {
     res.render('new');
@@ -189,43 +191,6 @@ app.get('/home', catchAsync( async(req, res) => {
     const products = await Product.aggregate([{ $sample: { size: 8 } }]);
     res.render('index', { products });
 }));
-
-app.get('/login', (req, res) => {
-    res.render('login');
-})
-
-app.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), (req, res) => {
-    req.flash('success', `Wellcome back, ${req.user.username}!`)
-    res.redirect('/home');
-})
-
-app.get('/register', (req, res) => {
-    res.render('register');
-})
-
-app.post('/register', catchAsync( async(req, res) => {
-    try{
-        const { email, username, password } = req.body;
-        const user = new User({email, username});
-        const registerUser = await User.register(user, password);
-        req.login(registerUser, () => {
-            req.flash('success', `Wellcome, ${username}!`)
-            res.redirect('/home')
-        })
-    } catch (e) {
-        req.flash('error', e.message)
-        res.redirect('/register')
-    }
-}))
-
-app.get('/logout', (req, res, next) => {
-    req.logout(err => {
-        if (err) {
-            return next(err);
-        }
-        res.redirect('/home');
-    });
-});
 
 app.post('/wishlist/:product_id', isLoggedIn, catchAsync( async(req, res) => {
     const id = req.params.product_id
