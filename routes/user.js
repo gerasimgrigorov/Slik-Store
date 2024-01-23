@@ -4,12 +4,20 @@ const passport = require('passport')
 const catchAsync = require('../utilities/catchAsync')
 const User = require('../models/user')
 
+const cartTransfer = (req, res, next) => {
+    res.locals.temporary = req.session.cart
+    console.log(req.session.cart)
+    next()
+}
+
 router.get('/login', (req, res) => {
     res.render('login');
 })
 
-router.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), (req, res) => {
+router.post('/login', cartTransfer, passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), (req, res) => {
     req.flash('success', `Wellcome back, ${req.user.username}!`)
+    req.session.cart = res.locals.temporary
+    console.log(req.session.cart)
     res.redirect('/');
 })
 
