@@ -6,7 +6,6 @@ const User = require('../models/user')
 
 const cartTransfer = (req, res, next) => {
     res.locals.temporary = req.session.cart
-    console.log(req.session.cart)
     next()
 }
 
@@ -17,7 +16,6 @@ router.get('/login', (req, res) => {
 router.post('/login', cartTransfer, passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), (req, res) => {
     req.flash('success', `Wellcome back, ${req.user.username}!`)
     req.session.cart = res.locals.temporary
-    console.log(req.session.cart)
     res.redirect('/');
 })
 
@@ -40,11 +38,12 @@ router.post('/register', catchAsync( async(req, res) => {
     }
 }))
 
-router.get('/logout', (req, res, next) => {
+router.get('/logout', cartTransfer, (req, res, next) => {
     req.logout(err => {
         if (err) {
             return next(err);
         }
+        req.session.cart = res.locals.temporary
         res.redirect('/');
     });
 });
