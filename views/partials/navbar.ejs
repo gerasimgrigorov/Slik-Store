@@ -27,12 +27,9 @@
           
           <div class="me-5">
               <div class="navbar-nav">
-                <a class="nav-link fs-5" href="<%= cartQuantity > 0 ? '/cart' : 'javascript:void(0);' %>">
-                  <i class="fa-solid fa-cart-shopping"></i> 
-                  <span class="badge rounded-pill bg-secondary position-absolute top-40 translate-middle cart-number">
-                    <%= cartQuantity  %>
-                  </span>
-                </a>
+                <% if (currentUser && currentUser.role === 'customer') { %>
+                  <a class="nav-link fs-5" href="/profile/wishlist"><i class="fa-solid fa-heart"></i></a>   
+                <% } %>
                 
                 <a class="nav-link fs-5" href=<%= currentUser ? "/profile/info" : "/login" %>><i class="fa-solid fa-user"></i></a>  
                 
@@ -40,9 +37,13 @@
                   <a class="nav-link fs-5" href="/order"><i class="fa-solid fa-chart-simple"></i></a>
                   <a class="nav-link fs-5" href="/new"><i class="fa-solid fa-circle-plus"></i></a>  
                 <% } %> 
-                <% if (currentUser) { %>
-                  <a class="nav-link fs-5" href="/logout"><i class="fa-solid fa-right-from-bracket"></i></a>   
-                <% } %>
+                
+                <a class="nav-link fs-5" href="<%= cartQuantity > 0 ? '/cart' : 'javascript:void(0);' %>">
+                  <i class="fa-solid fa-cart-shopping"></i> 
+                  <span class="badge rounded-pill bg-secondary position-absolute top-40 translate-middle cart-number">
+                    <%= cartQuantity  %>
+                  </span>
+                </a>
               </div>
           </div>
         </div>
