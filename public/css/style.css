@@ -269,4 +269,11 @@ input::-webkit-inner-spin-button {
     .image-brand img{
         width: 100px;
     }
+    .order-info h5{
+        font-size: 17px;
+        line-height: 1.4;
+    }
+    .order-info span{
+        font-size: 13px !important;
+    }
 }
