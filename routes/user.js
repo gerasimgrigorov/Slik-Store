@@ -16,6 +16,7 @@ router.get('/login', (req, res) => {
 router.post('/login', cartTransfer, passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), (req, res) => {
     req.flash('success', `Wellcome back, ${req.user.username}!`)
     req.session.cart = res.locals.temporary
+    res.locals.temporary = null
     res.redirect('/');
 })
 
@@ -44,6 +45,7 @@ router.get('/logout', cartTransfer, (req, res, next) => {
             return next(err);
         }
         req.session.cart = res.locals.temporary
+        res.locals.temporary = null
         res.redirect('/');
     });
 });
