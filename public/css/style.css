@@ -181,6 +181,13 @@ input::-webkit-inner-spin-button {
     text-align: center;
 }
 
+.gradient-background {
+    display: inline-block;
+    background: linear-gradient(to right, red, yellow);
+    -webkit-background-clip: text; /* For WebKit browsers */
+    color: transparent;
+}
+  
 .cart-product .item-container{
     cursor: pointer;
 }
