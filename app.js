@@ -26,7 +26,7 @@ const multer = require('multer');
 const { storage } = require('./cloudinary/index');
 const upload = multer({ storage });
 
-// models
+// mongoose models
 const Product = require('./models/product');
 const Wishlist = require('./models/wishlist');
 const User = require('./models/user');
@@ -34,7 +34,7 @@ const Order = require('./models/order');
 const Payment = require('./models/payment');
 const Contact = require('./models/contact')
 
-//router
+// express routers
 const productRouter = require('./routes/products')
 const cartRouter = require('./routes/cart')
 const orderRouter = require('./routes/order')

@@ -1,6 +1,6 @@
-<nav class="navbar sticky-top navbar-expand-lg navbar-black bg-body-secondary py-1">
-    <div class="container-fluid mx-sm-0 mx-lg-5">
-        <div class="ms-2 ms-sm-3 ms-md-5">
+<nav class="navbar sticky-top navbar-expand-lg navbar-black bg-body-secondary">
+    <div class="container">
+        <div class="fixed-width">
             <a href="/" class="navbar-brand">
 
                 <svg class="logo" viewBox="0 0 284 185" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -17,16 +17,14 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="mx-auto">
-            <div class="navbar-nav">
+          <div class="navbar-nav mx-auto">
               <a class="nav-link fs-5 fw-bold nav-text" href="/">Home</a>
               <a class="nav-link fs-5 fw-bold mx-1 nav-text" href="/products">Shop</a>
               <a class="nav-link fs-5 fw-bold nav-text" href="/contact">Contacts</a>
-            </div>
           </div>
           
-          <div class="me-5">
-              <div class="navbar-nav">
+          <div class="fixed-width">
+              <div class="navbar-nav justify-content-end">
                 <% if (currentUser && currentUser.role === 'customer') { %>
                   <a class="nav-link fs-5" href="/profile/wishlist"><i class="fa-solid fa-heart"></i></a>   
                 <% } %>

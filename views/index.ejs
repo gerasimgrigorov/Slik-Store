@@ -1,11 +1,13 @@
 <% layout('layouts/boilerplate') %>
 
-    <section id="flash">
+    <div class="container">
         <%- include('../views/partials/flash') %>
-    </section>
+    </div>
 
-    <section id="hero">
-    </section>
+    <div class="container index-picture">
+      <section id="hero">
+      </section>
+    </div>
 
     <div class="famous-brands d-flex flex-wrap justify-content-center">
         <div class="image-brand mx-2">
@@ -22,10 +24,10 @@
         </div> 
     </div>
 
-    <section id="product1" class="section-p1">
+    <section id="product1" class="section-p1 ">
         <h4 class="mx-1 my-4"><em>FEATURED PRODUCTS</em></h4>
     
-        <div class="pro-container mt-4 mb-3">
+        <div class="pro-container container mt-4 mb-3">
             <% for (let product of products) { %>
                 <div class="card pro event rounded-0 border-0" data-product-id="<%= product._id %>">
                     <div class="img-container">

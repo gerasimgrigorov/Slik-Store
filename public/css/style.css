@@ -4,18 +4,18 @@ body{
     min-height: 100vh;
 }
 
-#flash{
-    margin: 0% 4%;
-}
-
 #hero{
     background-image: url('/images/Supreme-girl.png');
-    height: 90vh;
+    height: 69vh;
     background-size:cover;
     background-repeat: no-repeat;
     justify-content: center;
     background-position: center top;
-    margin: 0% 4%;
+    /* margin: 0% 4%; */
+}
+
+.fixed-width{
+  width: 10rem;
 }
 
 .cart-number{
@@ -45,7 +45,7 @@ body{
 }
 
 .image-brand img{
-    width: 220px;
+    width: 205px;
 }
 
 /* STYLE SIZE */
@@ -86,16 +86,11 @@ body{
 
 /* PRODUCT PAGE  */
 #product1{
-    width: 85%;
-    margin: 0% auto;
     text-align: center;
-    top: 50%;
-    left: 50%;
 }
   
 /* #product1  */
 .pro-container{
-    margin: 0 6%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -104,16 +99,16 @@ body{
 .wishlist-container{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: start;
 }
 
 /* testtest  */
 
 #product1 .pro {
     width: 20%;
-    min-width: 250px;
+    min-width: 260px;
     cursor: pointer;
-    margin: 10px 20px 10px;
+    margin: 0% 1%;
     position: relative;
     overflow: hidden;
 }
@@ -233,14 +228,11 @@ input::-webkit-inner-spin-button {
 
 @media (max-width: 1200px) {
     .image-brand img{
-        width: 170px;
+        width: 160px;
     }
 }
 
 @media (max-width: 992px) {
-    #flash{
-        margin: 0;
-    }
     #hero{
         margin: 0;
     }
@@ -254,12 +246,18 @@ input::-webkit-inner-spin-button {
     .remove-border {
         border: none !important; /* Add your border styles here */
     }
+    .index-picture{
+      padding: 0 !important;
+      margin: 0 !important;
+      max-width: 100% !important;
+    }
 }
 
 @media (max-width: 576px) {
     .famous-brands {
         margin: 0% 4%;
     }
+    
 }
 
 

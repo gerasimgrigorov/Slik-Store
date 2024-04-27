@@ -3,7 +3,7 @@
     <section id="product1" class="section-p1">
     <h4 class="mx-1 my-4"><em>ALL PRODUCTS</em><span class="fs-5 fw-normal align-baseline text-body-secondary">(<%= products.length %> products)</span></h4>
 
-        <div class="pro-container">
+        <div class="container d-flex justify-content-center flex-wrap">
             <% for (let product of products) { %>
                 <div class="card pro event rounded-0 border-0" data-product-id="<%= product._id %>">
                     <div class="img-container">
