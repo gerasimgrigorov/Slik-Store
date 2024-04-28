@@ -19,8 +19,8 @@ body{
 }
 
 .cart-number{
-    margin-top: 4px;
-    font-size: 10px !important;
+    margin-top: 3px !important;
+    font-size: 12px !important;
 }
 
 .logo{
@@ -87,13 +87,6 @@ body{
 /* PRODUCT PAGE  */
 #product1{
     text-align: center;
-}
-  
-/* #product1  */
-.pro-container{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
 }
 
 .wishlist-container{
