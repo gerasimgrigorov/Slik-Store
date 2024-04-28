@@ -45,7 +45,7 @@ body{
 }
 
 .image-brand img{
-    width: 205px;
+    width: 210px;
 }
 
 /* STYLE SIZE */
@@ -106,7 +106,7 @@ body{
 
 #product1 .pro {
     width: 20%;
-    min-width: 260px;
+    min-width: 270px;
     cursor: pointer;
     margin: 0% 1%;
     position: relative;
@@ -228,7 +228,7 @@ input::-webkit-inner-spin-button {
 
 @media (max-width: 1200px) {
     .image-brand img{
-        width: 160px;
+        width: 170px;
     }
 }
 
@@ -236,15 +236,9 @@ input::-webkit-inner-spin-button {
     #hero{
         margin: 0;
     }
-}
-
-@media (max-width: 768px) {
-    .image-brand img{
-        width: 120px;
-    }
-    
-    .remove-border {
-        border: none !important; /* Add your border styles here */
+    .table-container{
+      margin-left: 0 !important;
+      margin-right: 0 !important;
     }
     .index-picture{
       padding: 0 !important;
@@ -253,9 +247,15 @@ input::-webkit-inner-spin-button {
     }
 }
 
-@media (max-width: 576px) {
-    .famous-brands {
-        margin: 0% 4%;
+@media (max-width: 768px) {
+    .image-brand img{
+        width: 130px;
+    }
+    .remove-border {
+        border: none !important; /* Add your border styles here */
+    }
+    .table-responsive {
+      overflow-x: auto !important;
     }
     
 }
@@ -272,7 +272,7 @@ input::-webkit-inner-spin-button {
         width: 90px;
     }
     .image-brand img{
-        width: 100px;
+        width: 110px;
     }
     .order-info h5{
         font-size: 17px;

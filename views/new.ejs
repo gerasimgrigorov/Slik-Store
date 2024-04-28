@@ -69,4 +69,70 @@
             <a href="/">Back to Home Page</a>
         </div>
     </div>
+    <div class="container table-container border rounded px-0 mb-4">
+      <div class="table-responsive">
+        <table class="table mb-0" style="min-width: 600px;">
+          <thead>
+            <tr>
+              <th scope="col" style="width: 35%; border-radius: 10px !important;">Photos</th>
+              <th scope="col" style="width: 20%;">Brand</th>
+              <th scope="col" style="width: 20%;">Model</th>
+              <th scope="col" style="width: 15%;">Price</th>
+              <th scope="col" style="width: 10%; border-radius: 10px !important;">Functions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(product of products) { %>
+                <tr>
+                  <th scope="row">
+                    <div class="d-flex align-items-center overflow-x-auto">
+
+                      <% for(image of product.images) {%>
+                        <img
+                        src=<%= image.url %>
+                        class="img-fluid me-1"
+                        style="width: 100px; height: 100px"
+                        alt=""
+                        />
+                      <% } %>
+                      
+                      
+                      <!-- <input type="text" class="border rounded w-100 px-1" name="image" value="<%= product.images[0].url %>"> -->
+                      
+                    </div>
+                  </th>
+                  <td>
+                    <p class="mb-0 mt-4">
+                      <input type="text" class="border rounded w-100 px-1" name="brand" value="<%= product.brand %>" readonly>
+                    </p>
+                    <!-- <p class="mb-0 mt-4"><%= product.brand %></p> -->
+                  </td>
+                  <td>
+                    <!-- <p class="mb-0 mt-4"><%= product.model %></p> -->
+                    <p class="mt-4">
+                      <input type="text" class="border rounded w-100 px-1" name="name" value="<%= product.model %>" readonly>
+                    </p>
+                  </td>
+                  <td>
+                    <!-- <p class="mb-0 mt-4"><%= product.price %>0 лв.</p> -->
+                    <p class="mb-0 mt-4">
+                      <input type="text" class="border rounded w-100 px-1" name="price" value=<%= product.price %> readonly>
+                    </p>
+                  </td>
+                  <td>
+                    <form action=<%= `/products/${product.id}?_method=DELETE` %> class="mt-4" method="post" style="display: inline-block !important;">
+                      <button class="btn btn-sm btn-md-md rounded bg-danger text-white border">
+                        Delete
+                      </button>
+                    </form>
+                  </td>
+                </tr>
+  
+            <% } %>
+  
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
     </div>

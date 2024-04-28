@@ -183,9 +183,10 @@ app.use('/contact', contactRouter)
 app.use('/profile', profileRouter)
 app.use('/', userRouter)
 
-app.get('/new', isAdmin, (req, res) => {
-    res.render('new');
-})
+app.get('/new', isAdmin, catchAsync( async (req, res) => {
+    const products = await Product.find({})
+    res.render('new', { products });
+}))
 
 app.get('/', catchAsync( async(req, res) => {
     const products = await Product.aggregate([{ $sample: { size: 8 } }]);

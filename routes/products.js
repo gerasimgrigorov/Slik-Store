@@ -31,6 +31,12 @@ router.get('/:id', catchAsync( async(req, res) => {
     res.render('show', { product, featured } );
 }))
 
+router.delete('/:id', catchAsync( async(req, res) => {
+  const { id } = req.params;
+  const product = await Product.findByIdAndDelete(id);
+  res.redirect('/new');
+}))
+
 router.post('/', isAdmin, upload.array('image', 4), validateProduct, catchAsync( async(req, res, next) => {
     const product = new Product(req.body.product);
     product.images = req.files.map(f => ({ url: f.path, filename: f.filename}));
