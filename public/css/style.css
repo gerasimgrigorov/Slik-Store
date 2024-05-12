@@ -4,6 +4,8 @@ body{
     min-height: 100vh;
 }
 
+/* General */
+
 #hero{
     background-image: url('/images/Supreme-girl.png');
     height: 69vh;
@@ -11,7 +13,6 @@ body{
     background-repeat: no-repeat;
     justify-content: center;
     background-position: center top;
-    /* margin: 0% 4%; */
 }
 
 .fixed-width{
@@ -48,7 +49,8 @@ body{
     width: 210px;
 }
 
-/* STYLE SIZE */
+/* Product Sizing */
+
 .size-button {
     width: 35px;
     height: 35px;
@@ -61,7 +63,6 @@ body{
     border-radius: 5px;
 }
 
-/* only for socks */
 .size-button-socks{
     width: 48px;
     height: 35px;
@@ -84,7 +85,8 @@ body{
 }
 
 
-/* PRODUCT PAGE  */
+/* Product  */
+
 #product1{
     text-align: center;
 }
@@ -94,8 +96,6 @@ body{
     flex-wrap: wrap;
     justify-content: start;
 }
-
-/* testtest  */
 
 #product1 .pro {
     width: 20%;
@@ -143,8 +143,19 @@ body{
     padding: 4px; /* Adjust padding as needed */
 }
 
+/* Contact */
 
-/* testest  */
+.contact-form textarea {
+  resize: none;
+}
+
+
+.map{
+  height: 100%;
+  min-height: 360px;
+}
+
+/* Wishlist */
 
 .wishProd{
     width: 30%;
@@ -157,6 +168,8 @@ body{
 .wishProd img{
     width: 100%;
 }
+
+/* Cart */
 
 .cart-product input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -198,20 +211,15 @@ input::-webkit-inner-spin-button {
     color: #F9F9F9 !important; 
 }
 
-.map{
-    height: 100%;
-    min-height: 360px;
-}
+/* Error */
 
-/* ERROR PAGE */
 .testtest{
     min-width: 220px !important;
 }
 
 .remove-border {
-    border: 1px solid #ddd !important; /* Add your border styles here */
+    border: 1px solid #ddd !important;
 }
-/* ------------------ */
 
 @media (min-width: 1025px) {
     .h-custom {
@@ -245,7 +253,7 @@ input::-webkit-inner-spin-button {
         width: 130px;
     }
     .remove-border {
-        border: none !important; /* Add your border styles here */
+        border: none !important;
     }
     .table-responsive {
       overflow-x: auto !important;
