@@ -30,9 +30,6 @@ const upload = multer({ storage });
 const Product = require('./models/product');
 const Wishlist = require('./models/wishlist');
 const User = require('./models/user');
-const Order = require('./models/order');
-const Payment = require('./models/payment');
-const Contact = require('./models/contact')
 
 // express routers
 const productRouter = require('./routes/products')
