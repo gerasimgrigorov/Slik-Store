@@ -8,6 +8,10 @@ const Order = require('../models/order')
 const Payment = require('../models/payment')
 
 const validateOrder = (req, res, next) => {
+  let numberValue = req.body.card.number.replace(/\s/g, '');
+  const cardNumber = parseInt(numberValue)
+  req.body.card.number = cardNumber
+  console.log(req.body.card.number)
   const { error } = orderSchema.validate(req.body)
 
   if(error){
