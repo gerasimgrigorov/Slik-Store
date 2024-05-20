@@ -7,24 +7,24 @@ const catchAsync = require('../utilities/catchAsync')
 const Contact = require('../models/contact')
 
 const validateContact = (req, res, next) => {
-    const { error } = contactSchema.validate(req.body)
+  const { error } = contactSchema.validate(req.body)
 
-    if(error){
-        const msg = error.details.map(e => e.message).join(' ')
-        throw new AppError(400, msg)
-    }
-    next()
+  if(error){
+    const msg = error.details.map(e => e.message).join(' ')
+    throw new AppError(400, msg)
+  }
+  next()
 }
 
 router.get('/', (req, res) => {
-    res.render('contact')
+  res.render('contact')
 })
 
 router.post('/', validateContact, catchAsync( async(req, res) => {
-    const request = new Contact(req.body.contact)
-    await request.save()
-    req.flash('success', "Thanks for the feedback. We'll be in touch!")
-    res.redirect('/contact')
+  const request = new Contact(req.body.contact)
+  await request.save()
+  req.flash('success', "Thanks for the feedback. We'll be in touch!")
+  res.redirect('/contact')
 }))
 
 module.exports = router
